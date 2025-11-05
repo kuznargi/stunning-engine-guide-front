@@ -1,0 +1,219 @@
+@import url("https://unpkg.com/leaflet/dist/leaflet.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================================
+   DESIGN SYSTEM — AI Tech x Deep Space Theme
+   All colors are HSL. Unified for Tailwind Design Tokens.
+   =========================================================== */
+
+@layer base {
+  :root {
+    /* Background System */
+    --background: 222 47% 11%;
+    --background-elevated: 222 47% 8%;
+    --foreground: 210 40% 98%;
+
+    /* Card System */
+    --card: 222 47% 11%;
+    --card-glass: 222 47% 11% / 0.6;
+    --card-foreground: 210 40% 98%;
+    --card-border: 234 89% 74% / 0.2;
+
+    /* Primary / Accent Colors */
+    --primary: 190 100% 50%;
+    --primary-glow: 190 100% 50% / 0.4;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 234 89% 74%;
+    --secondary-glow: 234 89% 74% / 0.3;
+    --secondary-foreground: 210 40% 98%;
+
+    /* State Colors */
+    --success: 158 64% 52%;
+    --success-glow: 158 64% 52% / 0.3;
+    --success-foreground: 222 47% 11%;
+
+    --warning: 38 92% 50%;
+    --warning-glow: 38 92% 50% / 0.3;
+    --warning-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-glow: 0 84% 60% / 0.3;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Text & Muted */
+    --text-primary: 210 40% 98%;
+    --text-secondary: 214 32% 59%;
+    --text-muted: 215 16% 47%;
+
+    --muted: 215 20% 28%;
+    --muted-foreground: 215 16% 47%;
+
+    /* UI Elements */
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+    --border: 234 89% 74% / 0.2;
+    --input: 234 89% 74% / 0.2;
+    --ring: 190 100% 50%;
+
+    /* Radius */
+    --radius: 0.9rem;
+
+    /* Gradients */
+    --gradient-cyan: linear-gradient(135deg, hsl(190 100% 50%), hsl(234 89% 74%));
+    --gradient-flow: linear-gradient(90deg, hsl(158 64% 52%), hsl(38 92% 50%), hsl(0 84% 60%));
+    --gradient-glass: linear-gradient(135deg, hsl(222 47% 11% / 0.6), hsl(222 47% 8% / 0.8));
+
+    /* Shadows & Glow */
+    --shadow-card: 0 8px 32px hsl(222 47% 4% / 0.4);
+    --shadow-elevated: 0 20px 60px hsl(222 47% 4% / 0.6);
+    --shadow-glow-cyan: 0 0 30px hsl(190 100% 50% / 0.3);
+    --shadow-glow-indigo: 0 0 20px hsl(234 89% 74% / 0.25);
+    --shadow-glow-emerald: 0 0 20px hsl(158 64% 52% / 0.25);
+
+    /* Animation Timings */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+/* ===========================================================
+   BASE TYPOGRAPHY & BODY
+   =========================================================== */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-heading {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* ===========================================================
+   UTILITIES
+   =========================================================== */
+@layer utilities {
+  /* === Glass Morphism === */
+  .glass-card {
+    background: hsl(var(--card-glass));
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--card-border));
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass-elevated {
+    background: hsl(var(--card-glass));
+    backdrop-filter: blur(24px);
+    border: 1px solid hsl(var(--card-border));
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .glass-hover {
+    transition: var(--transition-smooth);
+  }
+  .glass-hover:hover {
+    background: hsl(222 47% 11% / 0.8);
+    border-color: hsl(190 100% 50% / 0.4);
+    box-shadow: var(--shadow-glow-cyan);
+  }
+
+  /* === Glow Effects === */
+  .glow-cyan { box-shadow: var(--shadow-glow-cyan); }
+  .glow-indigo { box-shadow: var(--shadow-glow-indigo); }
+  .glow-emerald { box-shadow: var(--shadow-glow-emerald); }
+
+  /* === Hover Lift === */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* === Text Glow & Gradient === */
+  .text-glow-cyan { text-shadow: 0 0 20px hsl(190 100% 50% / 0.5); }
+
+  .gradient-text {
+    background: var(--gradient-cyan);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* === Animations === */
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 20px hsl(var(--primary-glow));
+    }
+    50% {
+      opacity: 0.8;
+      box-shadow: 0 0 40px hsl(var(--primary-glow));
+    }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--primary) / 0.1) 50%,
+      hsl(var(--muted)) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* === Scrollbar === */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+}
