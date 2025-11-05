@@ -57,16 +57,14 @@ const Solution = () => {
   className="mt-16 glass rounded-3xl p-8 animate-fade-in-up"
   style={{ animationDelay: '0.6s' }}
 >
-  <div className="aspect-video rounded-2xl overflow-hidden border border-[#00D9FF]/30 glow-cyan">
-    <iframe
-      className="w-full h-full"
-      src="https://www.youtube.com/embed/NHTCrgbgdlc?autoplay=1&mute=1&loop=1&playlist=NHTCrgbgdlc"
-      title="AI Dashboard Preview"
-      frameBorder="0"
-      allow="autoplay; encrypted-media; picture-in-picture"
-      allowFullScreen
-    ></iframe>
-  </div>
+<div className="aspect-video rounded-2xl overflow-hidden border border-[#00D9FF]/30 glow-cyan">
+  <img
+    src="/photo.png"
+    alt="AI Dashboard Preview"
+    className="w-full h-full object-cover"
+  />
+</div>
+
 </div>
 
       </div>
